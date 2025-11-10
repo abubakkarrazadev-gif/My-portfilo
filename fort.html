@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abubakkar Raza — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+  <!-- Simple icons (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-T3b2k7Xf8s..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ======================
+       Root / Theme
+       ====================== */
+    :root{
+      --bg:#071014;
+      --panel:#0c1114;
+      --muted:#9aa3ad;
+      --accent:#39d6ff;
+      --accent-2:#6af6c6;
+      --glass: rgba(255,255,255,0.03);
+      --soft: rgba(255,255,255,0.02);
+      --text:#eaf6ff;
+      --radius:14px;
+      --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --ff-serif: 'Playfair Display', serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1000px 400px at 10% 10%, rgba(57,214,255,0.04), transparent 6%),
+        linear-gradient(180deg, rgba(9,13,16,1) 0%, rgba(7,10,12,1) 100%);
+      color:var(--text);
+      font-family:var(--ff-sans);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:28px;
+    }
+
+    /* ======================
+       Layout
+       ====================== */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    /* Sidebar */
+    aside.sidebar{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.012));
+      border-radius:var(--radius);
+      padding:30px 22px;
+      position:sticky;
+      top:28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+      min-height:420px;
+    }
+
+    /* Profile image wrapper to perfectly center */
+    .profile-wrap{
+      width:140px;
+      height:140px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      padding:6px;
+      background: linear-gradient(180deg, rgba(57,214,255,0.06), rgba(106,246,198,0.02));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .profile-img{
+      width:124px;
+      height:124px;
+      border-radius:50%;
+      object-fit:contain;
+      display:block;
+      border: 4px solid rgba(255,255,255,0.03);
+      filter: brightness(1.05) contrast(1.02);
+    }
+
+    .side-name{
+      font-family:var(--ff-serif);
+      text-align:center;
+      font-weight:700;
+      font-size:1.15rem;
+      margin-top:8px;
+      color:#fff;
+    }
+    .side-title{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.85rem;
+      margin-top:6px;
+      line-height:1.25;
+    }
+
+    nav.side-nav{
+      margin-top:20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:center;
+    }
+    nav.side-nav a{
+      display:block;
+      width:90%;
+      text-decoration:none;
+      color:var(--muted);
+      text-align:center;
+      padding:10px 12px;
+      border-radius:10px;
+      transition:all .28s ease;
+      font-weight:600;
+    }
+    nav.side-nav a.active, nav.side-nav a:hover{
+      color: #071014;
+      background:var(--accent);
+      transform:translateX(6px);
+      box-shadow: 0 12px 30px rgba(57,214,255,0.06);
+    }
+
+    .side-footer{
+      margin-top:auto;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.82rem;
+    }
+
+    /* ======================
+       Main area / Hero
+       ====================== */
+    main.hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border-radius:var(--radius);
+      padding:44px;
+      min-height:420px;
+      display:flex;
+      gap:26px;
+      align-items:center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .hero-left{ flex:1; max-width:780px; }
+    .eyebrow{
+      color:var(--accent);
+      font-weight:700;
+      letter-spacing:1px;
+      font-size:0.9rem;
+      margin-bottom:8px;
+    }
+
+    .hero-title{
+      font-family:var(--ff-serif);
+      font-size:3.6rem;
+      margin:0 0 18px;
+      line-height:0.95;
+      color:#fff;
+      letter-spacing:-1px;
+    }
+    .hero-title .accent-word{ color:var(--accent); font-weight:800; font-size:3.6rem; }
+
+    .hero-desc{
+      color:var(--muted);
+      font-size:1.02rem;
+      max-width:720px;
+      margin-bottom:18px;
+    }
+
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+    .btn{
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,0.06);
+      background:transparent;
+      color:var(--text);
+      transition:all .24s ease;
+    }
+    .btn.primary{
+      background:linear-gradient(90deg,var(--accent), var(--accent-2));
+      color:#071014;
+      border:none;
+      box-shadow: 0 18px 40px rgba(57,214,255,0.06);
+    }
+    .btn.ghost{ background:transparent; }
+
+    .chips{ margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; }
+
+    .chip{
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-weight:700;
+      font-size:0.9rem;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* Hero right image card */
+    .hero-right{
+      width:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .photo-card{
+      width:100%;
+      border-radius:14px;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transition:transform .6s cubic-bezier(.2,.9,.2,1), box-shadow .4s;
+      transform-origin:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .photo-card:hover{ transform:translateY(-6px) scale(1.01); box-shadow: 0 50px 100px rgba(0,0,0,0.7); }
+    .hero-image{
+      width:100%;
+      display:block;
+      object-fit:cover;
+      height:560px;
+      filter: none; /* keep bright */
+      border-radius:12px;
+    }
+
+    /* ======================
+       Sections below hero
+       ====================== */
+    .sections{
+      margin-top:28px;
+      max-width:1200px;
+      margin-left:auto;
+      margin-right:auto;
+      padding:26px;
+      border-radius:var(--radius);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding:22px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      margin-bottom:18px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .project{
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* Contact form */
+    .contact-form input, .contact-form textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.01);
+      color:var(--text);
+      outline:none;
+      font-size:0.95rem;
+      margin-bottom:12px;
+    }
+    .contact-row{ display:flex; gap:12px; }
+    .contact-row > *{ flex:1; }
+
+    /* ======================
+       Animations & reveal
+       ====================== */
+    .fade-up{ opacity:0; transform:translateY(24px); transition:all .8s cubic-bezier(.2,.9,.2,1); }
+    .fade-up.in-view{ opacity:1; transform:none; }
+
+    /* tiny details */
+    h3{ margin:0 0 12px; font-family:var(--ff-serif); color:#fff; }
+    small.muted{ color:var(--muted); font-size:0.92rem; }
+
+    footer.site-footer{ text-align:center; color:var(--muted); padding:22px 0; margin-top:18px; }
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .wrap{ grid-template-columns: 1fr; padding-bottom:20px; }
+      aside.sidebar{ position:relative; top:0; display:flex; flex-direction:row; gap:14px; align-items:center; min-height:72px; padding:14px; }
+      .profile-wrap{ width:72px; height:72px; padding:4px; }
+      .profile-img{ width:64px; height:64px; border-radius:50%; }
+      nav.side-nav{ flex-direction:row; gap:8px; margin-left:auto; }
+      main.hero{ flex-direction:column; padding:22px; }
+      .hero-right{ width:100%; }
+      .hero-image{ height:360px; }
+      .hero-title{ font-size:2.2rem; }
+      .grid-3{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Sidebar">
+      <div class="profile-wrap" role="img" aria-label="Profile photo">
+        <!-- Replace src with your image link (file or URL) -->
+        <img class="profile-img" src="c:\Users\Abubakkar Raza\Downloads\Untitled design (1).png" alt="Profile">
+      </div>
+
+      <div class="side-name">Abubakkar Raza</div>
+      <div class="side-title">Machine Learning &amp; AI • Web Developer</div>
+
+      <nav class="side-nav" aria-label="Primary">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="side-footer" style="margin-top:18px;">
+        © <span id="year">2026</span> Made with ♥<br>
+        <small class="muted">Abu Bakkar Raza </small>
+      </div>
+    </aside>
+
+    <!-- HERO / MAIN -->
+    <main class="hero" id="home">
+      <div class="hero-left fade-up">
+        <div class="eyebrow">I am</div>
+        <h1 class="hero-title">
+          Abubakkar — <span class="accent-word" id="typed"></span>
+        </h1>
+
+        <p class="hero-desc">
+          I'm a Computer Science student focused on Machine Learning and web development. I build smart systems, data visualizations and web tools. I love transforming ideas into clean, usable products.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#projects"><i class="fa fa-briefcase"></i> View Projects</a>
+          <a class="btn ghost" href="mailto:your.email@example.com"><i class="fa fa-envelope"></i> Contact Me</a>
+        </div>
+
+        <div class="chips">
+          <div class="chip">Python</div>
+          <div class="chip">Pandas</div>
+          <div class="chip">scikit-learn</div>
+          <div class="chip">TensorFlow</div>
+          <div class="chip">Web Dev</div>
+        </div>
+      </div>
+
+      <div class="hero-right fade-up">
+        <div class="photo-card" id="photoCard">
+          <!-- Replace src with your hero image (keep it bright) -->
+          <img class="hero-image" id="heroPhoto" src="c:\Users\Abubakkar Raza\Downloads\Untitled design (1).png" alt="Hero">
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="sections">
+    <div class="card fade-up" id="about">
+      <h3>About</h3>
+      <p class="muted">I’m Abubakkar, a Computer Science student passionate about Machine Learning, AI and building web tools. I enjoy solving real problems by combining data, models and clean interfaces.</p>
+    </div>
+
+    <div class="card fade-up" id="skills">
+      <h3>Skills</h3>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+        <div class="chip">Python</div>
+        <div class="chip">Pandas</div>
+        <div class="chip">scikit-learn</div>
+        <div class="chip">TensorFlow</div>
+        <div class="chip">HTML/CSS/JS</div>
+        <div class="chip">Bootstrap</div>
+      </div>
+    </div>
+
+    <div class="card fade-up" id="projects">
+      <h3>Projects</h3>
+      <div class="grid-3" style="margin-top:12px;">
+        <div class="project">
+          <strong>Movie Recommendation System</strong>
+          <p class="muted">K-means clustering + content filtering prototype. Flask dashboard + Docker deployment.</p>
+        </div>
+        <div class="project">
+          <strong>Student Enrollment Predictor</strong>
+          <p class="muted">Data cleaning, feature engineering and XGBoost model for enrollment forecasting.</p>
+        </div>
+        <div class="project">
+          <strong>Real-Time Fitness Tracker (Prototype)</strong>
+          <p class="muted">Streaming data visualization and anomaly detection in heart-rate signals.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card fade-up" id="contact">
+      <h3>Contact</h3>
+      <p class="muted">Want to work together or see my resume? Send me an email or use the form below.</p>
+
+      <form class="contact-form" onsubmit="submitContact(event)">
+        <div class="contact-row">
+          <input type="text" id="name" placeholder="Your name" required>
+          <input type="email" id="email" placeholder="Your email" required>
+        </div>
+        <textarea id="message" rows="5" placeholder="Message" required></textarea>
+        <div style="display:flex; gap:12px;">
+          <button class="btn primary" type="submit"><i class="fa fa-paper-plane"></i> Send</button>
+          <a class="btn" href="#" id="downloadResume"><i class="fa fa-file"></i> Download Resume</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    Built by Abubakkar Raza • <small class="muted">Made with HTML/CSS/JS • Deploy on GitHub Pages / Netlify</small>
+  </footer>
+
+  <!-- ======================
+       Scripts (typing, reveals, nav)
+       ====================== -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple typed effect (no library)
+    (function typed(){
+      const el = document.getElementById('typed');
+      const words = ['a Web Developer', 'a ML Enthusiast', 'a Problem Solver', 'a Designer'];
+      let w = 0, i = 0, forward = true;
+      function step(){
+        const word = words[w];
+        if(forward){
+          i++;
+          if(i > word.length){ forward=false; setTimeout(step, 900); return; }
+        } else {
+          i--;
+          if(i < 0){ forward=true; w = (w+1) % words.length; setTimeout(step, 300); return; }
+        }
+        el.textContent = word.substring(0,i);
+        setTimeout(step, 70);
+      }
+      step();
+    })();
+
+    // IntersectionObserver reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('in-view');
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.fade-up').forEach(el=> io.observe(el));
+
+    // Smooth nav scrolling + active link
+    const links = document.querySelectorAll('nav.side-nav a');
+    links.forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        links.forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // Keep hero image bright and add small parallax on mouse
+    const hero = document.getElementById('heroPhoto');
+    const card = document.getElementById('photoCard');
+    hero.style.filter = 'brightness(1.05) contrast(1.04)';
+    card.addEventListener('mousemove', (e)=>{
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `rotateX(${ -y * 4 }deg) rotateY(${ x * 6 }deg) translateZ(0)`;
+    });
+    card.addEventListener('mouseleave', ()=> card.style.transform = '');
+
+    // Contact form (simple mailto fallback + toast)
+    function submitContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      // fallback: open mail client
+      const subject = encodeURIComponent('Contact from portfolio: ' + name);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
+    }
+
+    // Resume download (placeholder) - replace href with /resume.pdf or your file path
+    document.getElementById('downloadResume').addEventListener('click', function(e){
+      e.preventDefault();
+      // If you have a resume file, set location.href = 'resume.pdf';
+      alert('Replace this with a link to your resume file (resume.pdf).');
+    });
+
+    // On scroll: highlight nav item by section
+    const sections = document.querySelectorAll('main.hero, .sections .card, #projects');
+    window.addEventListener('scroll', ()=>{
+      let idx = 0;
+      const scrollPos = window.scrollY + (window.innerHeight/3);
+      const anchors = Array.from(links);
+      const targets = anchors.map(a=> document.querySelector(a.getAttribute('href')));
+      for(let i=0;i<targets.length;i++){
+        const t = targets[i];
+        if(!t) continue;
+        if(scrollPos >= t.offsetTop) idx = i;
+      }
+      anchors.forEach(a=>a.classList.remove('active'));
+      if(anchors[idx]) anchors[idx].classList.add('active');
+    });
+  </script>
+</body>
+</html>
